@@ -140,9 +140,7 @@ extern status_t UART_ReceiveChar(uint8* a_data_ptr);
 extern status_t UART_StartReceive(void);
 extern status_t UART_StopReceive(void);
 
-extern status_t UART_SendString( uint8* a_data_ptr);
-extern status_t UART_ReceiveString(uint8* a_data_ptr);
 
-status_t UART_ErrorMng(void); 
+/*status_t UART_ErrorMng(void); */
 
 #endif /* UART_H_ */

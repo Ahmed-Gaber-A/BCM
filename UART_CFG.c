@@ -6,11 +6,13 @@
  */ 
 #include "UART.h"
 
-/*void test (void);*/
+extern volatile uint8 TxByte_done ; 
+
+extern volatile uint8 RxByte_done ; 
 
 const UART_Cfg_S UART_Cfg = {
 		9600,
-		DS_Disabled, RxINT_Dis, TxINT_Dis, EmptyINT_Dis,
-		Data_8, parity_odd, Stop_Two
-	/*	,test,test,test */
+		DS_Disabled, RxINT_EN, TxINT_EN, EmptyINT_Dis,
+		Data_8, parity_odd, Stop_One,
+		&RxByte_done , &TxByte_done
 	};

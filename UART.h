@@ -60,26 +60,29 @@
 /************************************************************************/
 typedef enum {UART_OK =0, UART_NOK}status_t; /* check type to check function execution succes*/
 	
-typedef enum {DS_Enabled=1, DS_Disabled=0} DoubleSpeed_t;
-typedef enum {RxINT_EN=1, RxINT_Dis=0} RxINT_t;
-typedef enum {TxINT_EN=1, TxINT_Dis=0} TxINT_t;
-typedef enum {EmptyINT_EN=1, EmptyINT_Dis=0} EmptyINT_t;
-typedef enum {Data_5=0, Data_6=1, Data_7=2, Data_8=3, Data_9=4} Datasize_t;
-typedef enum {parity_disabled=0, parity_odd=1, parity_even=2} parity_t;
-typedef enum {Stop_One=0, Stop_Two=1} stopbits_t;
+typedef enum {DS_Enabled=1, DS_Disabled=0} UART_enm_DoubleSpeed_t;
+typedef enum {RxINT_EN=1, RxINT_Dis=0} UART_enm_RxINT_t;
+typedef enum {TxINT_EN=1, TxINT_Dis=0} UART_enm_TxINT_t;
+typedef enum {EmptyINT_EN=1, EmptyINT_Dis=0} UART_enm_EmptyINT_t;
+typedef enum {Data_5=0, Data_6=1, Data_7=2, Data_8=3, Data_9=4} UART_enm_Datasize_t;
+typedef enum {parity_disabled=0, parity_odd=1, parity_even=2} UART_enm_parity_t;
+typedef enum {Stop_One=0, Stop_Two=1} UART_enm_stopbits_t;
 
+typedef uint8* UART_CallBackVar ; 
 typedef void (*UART_CallBackPtr)(void);
 
 /*A structure type to contain all the required configuration*/
 typedef struct {
 	uint32 BaudRate;    
-	DoubleSpeed_t DoubleSpeed; 
-	RxINT_t RxINT; 
-	TxINT_t TxINT; 
-	EmptyINT_t EmptyINT; 
-	Datasize_t Datasize; 
-	parity_t parity; 
-	stopbits_t StopBits; 
+	UART_enm_DoubleSpeed_t DoubleSpeed; 
+	UART_enm_RxINT_t RxINT; 
+	UART_enm_TxINT_t TxINT; 
+	UART_enm_EmptyINT_t EmptyINT; 
+	UART_enm_Datasize_t Datasize; 
+	UART_enm_parity_t parity; 
+	UART_enm_stopbits_t StopBits; 
+	volatile UART_CallBackVar RX_DoneFlag;
+	volatile UART_CallBackVar TX_DoneFlage;
 	/*
 	UART_CallBackPtr FrameErrorCallBackPtr;
 	UART_CallBackPtr ParityErrorCallBackPtr;

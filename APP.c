@@ -9,16 +9,22 @@
 #include "UART.h"
 #include "BCM.h"
 
+/*The code for CPU_sleep() function.
+* is in the DIO module.
+*/
 
 int main(void)
 {
+	uint16 data_size = BCM_MaxLength;
+	uint8 data[data_size] ;
 	
-	BCM_Receive(*)
 	while(1)
 	{
-		BCM_SEND(data,data_size);
-		TX_DIsp
+		BCM_Send(data,data_size);
+		BCM_TxDispatcher();
+		BCM_RxDispatcher();
+		cpu_sleep();
 		
-		//TODO:: Please write your application code
+		
 	}
 }
